@@ -1,0 +1,141 @@
+require(rvest)
+vignette('selectorgadget')
+options(help.ports=21510);
+vignette('selectorgadget')
+vignette('selectorgadget')
+national.university.rankings <- html('http://colleges.usnews.rankingsandreviews.com/best-colleges/rankings/national-liberal-arts-colleges/data/sort+search_tuition_display/sortdir+asc')
+tuition <- html_node(national.university.rankings, '.search_tuition_display')
+length(tuition)
+tuition
+dat <- html_node(national.university.rankings, 'td')
+length(dat)
+dat
+tuition <- html_node(national.university.rankings, '.search_tuition_display .column-odd .table-column-odd')
+tuition
+tuition <- html_node(national.university.rankings, 'td .search_tuition_display')
+tuition
+tuition <- html_node(national.university.rankings, 'td.search_tuition_display')
+tuition %>% length
+tuition
+ls()
+national.university.rankings
+grep(national.university.rankings, '4')
+?grep
+princeton <- html('http://colleges.usnews.rankingsandreviews.com/best-colleges/rankings/national-universities/data')
+princeton %>% html_nodes('td')
+princeton %>% html_nodes('td .search_tuition_display')
+?html_node
+princeton %>% html_node('td .search_tuition_display')
+princeton %>% html_nodes('td .search_tuition_display')
+princeton <- html('http://colleges.usnews.rankingsandreviews.com/best-colleges/rankings/national-universities/data')
+?html_node
+princeton %>% html_nodes('td')
+princeton %>% html_nodes('tr td')
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr')
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr td')
+princeton %>% html_nodes('td .r_c_avg_pct_grad_6yr')
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr') 
+princeton %>% html_nodes('td .r_c_avg_pct_grad_6yr')
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr')
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr') %>% extract2(1)
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr') %>% extract2(5)
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr') %>% extract2(5) %>% extract2(1)
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr span:not') %>% extract2(5) %>% extract2(1)
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr :not span') %>% extract2(5) %>% extract2(1)
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr :not(span)') %>% extract2(5) %>% extract2(1)
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr :not(span)') 
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr ') 
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr -.footnote') 
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr .footnote') 
+princeton %>% html_nodes('.r_c_avg_pct_grad_6yr') 
+princeton %>% html_nodes(xpath='//*[contains(concat( " ", @class, " " ), concat( " ", "search_tuition_display", " " ))]') 
+princeton %>% html_nodes(xpath='//*[contains(concat( " ", @class, " " ), concat( " ", "search_tuition_display", " " ))]' and not('span')) 
+princeton %>% html_nodes(xpath='//*[contains(concat( " ", @class, " " ), concat( " ", "search_tuition_display", " " ))]' and not(span)) 
+princeton %>% html_nodes(xpath='//*[contains(concat( " ", @class, " " ), concat( " ", "search_tuition_display", " " )) and not(span)]') 
+princeton %>% html_nodes(xpath='//*[contains(concat( " ", @class, " " ), concat( " ", "search_tuition_display", " " )) ]') 
+princeton %>% html_nodes(xpath='//*[contains(concat( " ", @class, " " ), concat( " ", "search_tuition_display", " " )) ].not(span)') 
+princeton %>% html_nodes(xpath='//*td[contains(concat( " ", @class, " " ), concat( " ", "search_tuition_display", " " )) ]') 
+princeton %>% html_nodes(xpath='html/body/div/div/div/table/tbody/tr')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[@class]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[@class=search_tuition_display]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[@class="search_tuition_display"]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[@class=="search_tuition_display"]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[@class="search_tuition_display"]')
+history(95)
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[@class search_tuition_display]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[@class="search_tuition_display"]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td/*[@class="search_tuition_display"]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td/[@class="search_tuition_display"]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[@class="search_tuition_display"]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[contains(concat(" ", @class, " "), " tuition ")]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[contains(concat(" ", @class, " "), "tuition")]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[contains(concat(" ", @class, " "), "tuition")]/*')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[contains(concat(" ", @class, " "), "tuition")]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[contains(concat(" ", @class, " "), "tuition")]/span')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[contains(concat(" ", @class, " "), "tuition")]')
+princeton %>% html_nodes(xpath='/html/body/div/div/div/table/tbody/tr/td[contains(concat(" ", @class, " "), "tuition")]/not(span)')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]/*')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition"), position()=1]')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]/[position()=1]')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]')
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(25)
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(25) %>% extract2(2)
+princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(25) %>% extract2(1)
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) }
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) %>% print}
+# returns string w/o leading whitespace
+trim.leading <- function (x)  sub("^\\s+", "", x)
+# returns string w/o trailing whitespace
+trim.trailing <- function (x) sub("\\s+$", "", x)
+# returns string w/o leading or trailing whitespace
+trim <- function (x) gsub("^\\s+|\\s+$", "", x)
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) %>% %>% trim.leading %>% print}
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) %>% trim.leading %>% print}
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) %>% print %>% trim.leading}
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) %>% print %>% trim.leading %>% trim.trailing}
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) %>% as.character}
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) %>% print} -> tuition.1
+tuition.1
+for (j in 1L:25L) { princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) } -> tuition.1
+tuition.1
+tuition.1 <- character(25)
+tuition.1
+for (j in 1L:25L) { tuition.1[[j]] <- princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) }
+tuition.1 <- list()
+for (j in 1L:25L) { tuition.1[[j]] <- princeton %>% html_nodes(xpath='//td[contains(concat(" ", @class, " "), "tuition")]') %>% extract2(j) %>% extract2(1) }
+tuition.1
+savehistory('stripped the tuitions.Rhist')
+tuition.1 %>% as.numeric
+for (j in 1:25L) tuition.1[[j]] %>% as.numeric
+str(tuition.1[[25]])
+dput(tuition.1[[25]])
+??pointer
+tuition.1[[25]] %>% as.raw
+?externalptr
+for (j in 1:25L) tuition.1[[j]] %>% print %>% as.character
+for (j in 1:25L) tuition.1[[j]] %>% print %>% as.character -> tuition.2
+tuition.2
+tuition.2 <- list()
+for (j in 1:25L) tuition.1[[j]] %>% print %>% as.character -> tuition.2[[j]
+]
+for (j in 1:25L) tuition.1[[j]] %>% print %>% as.character -> tuition.2[[j]]
+tuition.2
+?print
+for (j in 1:25L) html_text( tuition.1[[j]] )
+for (j in 1:25L) html_text( tuition.1[[j]] ) -> tuition.2[[j]]
+tuition.2[[j]]
+tuition.2[[25]]
+for (j in 1:25L) html_text( tuition.1[[j]] ) %>% trim.leading -> tuition.2[[j]]
+tuition.2[[25]]
+for (j in 1:25L) html_text( tuition.1[[j]] ) %>% trim.leading %>% trim.trailing -> tuition.2[[j]]
+tuition.2[[25]]
+tuition.2
+tuition.2 %>% unlist
+savehistory("extracted the tuition from the pointer.Rhist")
