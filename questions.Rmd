@@ -1,0 +1,1093 @@
+#Questions
+
+
+- is fsend_i always decreasing?  
+- do rows (colleges) with PrivacySuppressed or NULL actually display some data?  
+- compare histograms of income to US averages 
+- subtract family income from student income 
+- NWNE? WNE?
+- the counts nearly always integer?
+- pct_ba = ?  It's not black + asian (tested ✓)
+- lowest % aged under 24, lowest age of entry, % independent
+- inequality amongst schools (mean/median ratio of hh inc)
+- how well do various measures of "independent" go together? (married, veteran, agesquared…)
+- how well do pell grants go with low hh income?
+- can you use these stats to gauge 
+
+
+#### ending p means…?
+
+they are cohorts.
+- p6 is 6 years after graduation.
+- p10 is 10 years after graduation.
+
+### fsend means … ?
+
+how many FAFSA forms 
+
+Two uses:
+- how many people filled out fafsa's (measure of aid, vs say poverty or log hh inc)
+- how many people conscientiously / competitively applied to many schools
+
+
+
+
+
+
+
+
+
+
+# TODO
+
+
+- look at quantiles 
+- look at mean, median, sd, squares, etc 
+- mean vs median
+- √squared age − age ✓
+- log versus log of total
+
+```{r difference.in.logs}
+#na.omit(earnings$ln_median_hh_inc) - na.omit(log(earnings$median_hh_inc)) %>% some(500) %>% stem
+#na.omit(earnings$ln_median_hh_inc) - na.omit(log(earnings$median_hh_inc)) %>% kd
+{ earnings$ln_median_hh_inc - log(earnings$median_hh_inc) } %>% stem
+{ earnings$ln_median_hh_inc - log(earnings$median_hh_inc) } %>% na.omit %>% kd
+```
+
+OK, so this is just a computed column.
+
+
+- sort by highest standard deviation (greatest wage dispersion)
+- look at quantiles
+- other measures of wage dispersion of graduates
+- try to account for starting income (how??)
+- try to adjust ratio of mean:median for low incomes generally being easier to get in 2:1 ratio
+- try to adjust high SD's for same
+
+
+Maybe just SD / mean is good enough?
+
+
+
+
+
+
+
+
+
+#Interesting Subsets
+
+## lot of graduates make <25k
+- cosmetology schools, naturopathy
+
+## almost all graduates make >25k
+- schools in New York (can I take out family income?)
+- RPI, Bentley, Lehigh
+- (call this "risk factor")
+
+
+
+# Interesting fields
+
+- loan ever
+- pell ever
+- age & age²
+- minority, female, race, dependents, veteran
+
+
+
+Goal to subset or "mod out" by these?
+
+
+
+
+
+# sort by
+
+- % white
+- really low incomes
+- log median hh income
+- sent FAFSA to a lot of other schools
+- serving veterans, poor, low hh income
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Schools with the greatest "age curvature" (√age²−age)
+Canada College
+Laurel University
+King's University
+Mesalands Community College
+Coastline Community College
+Industrial Technical College
+Southeastern Baptist College
+Institucion Chaviano de Mayaguez
+Prince Institute-Southeast
+Austin Graduate School of Theology
+College of Business and Technology-Kendall
+Dawson Community College
+Cornerstone University
+Trinity College of Florida
+San Jose City College
+Institute of American Indian and Alaska Native Culture
+StenoTech Career Institute-Fairfield
+Charles Stuart School of Diamond Setting
+Faith Evangelical College & Seminary
+Mountwest Community and Technical College
+Computer Tutor Business and Technical Institute
+Lexington College
+Crossroads Bible College
+Precision Manufacturing Institute
+Epic Bible College
+Ventura Adult and Continuing Education
+Heritage Bible College
+Los Angeles City College
+Nyack College
+East West College of Natural Medicine
+Washington County Career Center-Adult Technical Training
+Springfield College
+Advanced College
+Northwest Technology Center-Alva
+Northwest Technology Center-Fairview
+Geneva College
+Globe Institute of Technology
+Phagans Newport Academy of Cosmetology Careers
+Eastern Oklahoma County Technology Center
+Community Christian College
+Pennsylvania Academy of the Fine Arts
+Lebanon College
+Moler Barber College
+Bramson ORT College
+Manhattan School of Computer Technology
+
+
+
+
+## Schools with the highest ratio of mean : median family income
+Austin Graduate School of Theology
+Albany Medical College
+House of Heavilin Beauty College-Raymore
+The Creative Circus
+University of Texas Southwestern Medical Center
+Commonwealth Technical Institute
+Lincoln University
+Paul Mitchell the School-Louisville
+South Baylo University
+Apex Academy of Hair Design Inc
+International Barber & Style College
+HRDE-Stanley Technical Institute-Clarksburg
+HRDE-Stanley Technical Institute-Parkersburg
+Spanish-American Institute
+Huertas College
+Sierra College of Beauty
+Leech Lake Tribal College
+MTI Business College Inc
+Medical College of Wisconsin
+Camelot College
+Sherman College of Straight Chiropractic
+Hair Academy of Safford
+Meharry Medical College
+Sh'or Yoshuv Rabbinical College
+Jenny Lea Academy of Cosmetology
+Mount Angel Seminary
+Midwestern University-Downers Grove
+Midwestern University-Glendale
+ICDC College
+Hunter Business School
+Travel Institute of the Pacific
+Nouvelle Institute
+Cain's Barber College Inc
+International Training Careers
+Stone Child College
+College of Micronesia-FSM
+EDP University of Puerto Rico Inc-San Sebastian
+EDP Univeristy of Puerto Rico Inc-San Juan
+Garrett-Evangelical Theological Seminary
+Talmudic College of Florida
+Northeast Ohio Medical University
+Trend Barber College
+New York College of Podiatric Medicine
+The English Center
+Dayton Barber College
+Florida Education Institute
+Studio Jewelers
+Caribbean Forensic and Technical College
+Five Branches University
+House of Heavilin Beauty College-Kansas City
+La Belle Beauty Academy
+Claremont School of Theology
+Massachusetts School of Barbering
+Charles A Jones Career and Education Center
+Advance Science Institute
+
+### ok, but how about non-low family income *and* high ratio of mean:median ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Schools with greatest standard deviation of 10-year incomes
+A T Still University of Health SciencesMedical College of Wisconsin
+West Virginia School of Osteopathic Medicine
+Stanford University
+Rosalind Franklin University of Medicine and Science
+Massachusetts Institute of Technology
+King's University
+Harvard University
+Princeton University
+University of Pennsylvania
+Baylor College of Medicine
+Upstate Medical University
+University of North Texas Health Science Center
+Meharry Medical College
+Amherst College
+The University of Texas Health Science Center at Houston
+University of Chicago
+SUNY Downstate Medical Center
+University of Massachusetts Medical School Worcester
+Carnegie Mellon University
+Duke University
+University of Texas Southwestern Medical Center
+Yale University
+Albany Medical College
+Monterey Institute of International Studies
+Middlebury College
+Philadelphia College of Osteopathic Medicine
+The Juilliard School
+Dartmouth College
+University of California-Hastings College of Law
+Columbia University in the City of New York
+New York Medical College
+Babson College
+Georgetown University
+The University of Texas Health Science Center at San Antonio
+University of California-San Francisco
+Weill Cornell Medical College
+Cornell University
+Swarthmore College
+Tufts University
+Western University of Health Sciences
+California Institute of the Arts
+Golden Gate University-Silicon Valley
+Golden Gate University-Seattle
+Golden Gate University-Los Angeles
+Golden Gate University-San Francisco
+Midwestern University-Glendale
+Midwestern University-Downers Grove
+Brown University
+New York University
+Williams College
+Northwestern University
+University of Notre Dame
+University of Nebraska Medical Center
+University of Colorado Denver
+Rush University
+Medical University of South Carolina
+Lafayette College
+Colgate University
+Brooklyn Law School
+
+
+
+
+
+# Harvard vs MIT
+
+```{r}
+earnings %>% select(INSTNM, loan_ever, age_entry, age_curvature, veteran, faminc, income_inequality, fsend_count, fsend_1, fsend_5, mn_earn_wne_p7, sd_earn_wne_p7, sd_earn_wne_p6, gt_25k_p7) %>% arrange(sd_earn_wne_p6) %>% na.omit %>% tail(25) %>% select(INSTNM, faminc, income_inequality, gt_25k_p7, mn_earn_wne_p7, sd_earn_wne_p7)
+```
+
+
+
+                                               INSTNM faminc income_inequality
+5910                           Wake Forest University 124215               1.2
+5911  University of North Texas Health Science Center  22394               1.5
+5912              Midwestern University-Downers Grove  24971               3.0
+5913                   Midwestern University-Glendale  24971               3.0
+5914        University of New Hampshire-School of Law  14332               1.6
+5915                       Baylor College of Medicine  14305               2.2
+5916          A T Still University of Health Sciences  19377               1.4
+5918                                Dartmouth College 102622               1.3
+5919                                  Yale University  73769               1.6
+5920                            Georgetown University  87179               1.4
+5921 University of California-Hastings College of Law  21104               1.6
+5922      Columbia University in the City of New York  59265               1.9
+5923          Thunderbird School of Global Management  36890               1.2
+5924                              Brooklyn Law School  17727               1.9
+5925                            University of Chicago  75760               1.4
+5926                           Albany Medical College  10946               2.5
+5927                          Meharry Medical College  18327               2.9
+5928                                  Duke University  92670               1.3
+5929                     Medical College of Wisconsin  13577               2.7
+5930                       University of Pennsylvania  87201               1.4
+5931                             Princeton University  89090               1.8
+5932                               Harvard University  60646               1.8
+5933                              Boise Bible College  44069               1.2
+5934                              Stanford University  83178               1.5
+5935            Massachusetts Institute of Technology  95849               1.2
+
+
+
+
+
+That's right: family incomes at MIT are *higher* than those at Harvard, by about 50%. There is also a great deal of variation in family incomes at Harvard / Stanford / Yale / Dartmouth.
+
+The `income_inequality` measure is one I dreamt up (should put that command in the dplyr command instead of the dataset ... will do on cleanup). It's the ratio of family income to median family income. [^It turned out to be a problematic measure because a lot of the cosmetology schools will have low enough of both sorts — going along with being independent = lower income than parents — that you can get super-high ratios, like 10k : 5k. Central measures like mean and median aren't going to end up as rich as the richest parents, so even schools .1%'ers send their kids to don't get 2:1 ratios. There are enough poor people, though, that median incomes at cosmetology schools can get quite low and throw up the ratio.]
+
+
+
+Also … nice use of "global management", Thunderbird. Your family incomes are 36k. Quite global, ain't it?
+
+
+
+
+
+
+# quantiles of the educated
+
+```
+<earnings csvcut -c 2,43,49,50,51,52 | grep -v Privacy | csvsort -c 2 | csvlook
+```
+
+(`grep -v` is inverted match. Useful one here!)
+
+
+```
+|------------------------------------------------------------------------------------------------+----------------+--------------------+--------------------+--------------------+---------------------|
+|  INSTNM                                                                                        | sd_earn_wne_p9 | pct10_earn_wne_p10 | pct25_earn_wne_p10 | pct75_earn_wne_p10 | pct90_earn_wne_p10  |
+|------------------------------------------------------------------------------------------------+----------------+--------------------+--------------------+--------------------+---------------------|
+|  New Beginning College of Cosmetology                                                          |                |                    |                    |                    |                     |
+|  Selma University                                                                              |                |                    |                    |                    |                     |
+|  Troy University-Global Campus                                                                 |                |                    |                    |                    |                     |
+|  Alaska Bible College                                                                          |                |                    |                    |                    |                     |
+|  Global MBA Latin American Managers Program Satellite Campus                                   |                |                    |                    |                    |                     |
+|  Frank Lloyd Wright School of Architecture                                                     |                |                    |                    |                    |                     |
+|  Arkansas Beauty College                                                                       |                |                    |                    |                    |                     |
+|  Career Academy of Hair Design-Fayetteville                                                    |                |                    |                    |                    |                     |
+|  Shorter College                                                                               |                |                    |                    |                    |                     |
+|  American Academy of Dramatic Arts-Los Angeles                                                 |                | 3700               | 12800              | 46400              | 58900               |
+|  Phillips Graduate Institute                                                                   |                |                    |                    |                    |                     |
+|  Sofia University                                                                              |                |                    |                    |                    |                     |
+|  Northeastern University                                                                       | 41700          | 18800              | 38500              | 84500              | 112700              |
+|  Rutgers University-Camden                                                                     | 41900          | 15400              | 35400              | 77800              | 108100              |
+|  Rutgers University-New Brunswick                                                              | 41900          | 15400              | 35400              | 77800              | 108100              |
+|  Rutgers University-Newark                                                                     | 41900          | 15400              | 35400              | 77800              | 108100              |
+|  Regis University                                                                              | 42400          | 15100              | 33700              | 76100              | 99900               |
+|  California Polytechnic State University-San Luis Obispo                                       | 42600          | 15700              | 37900              | 86400              | 112300              |
+|  University of Connecticut                                                                     | 42700          | 19000              | 35900              | 74800              | 101800              |
+|  National Louis University                                                                     | 42700          | 9600               | 25000              | 67100              | 101300              |
+|  Beth Medrash Govoha                                                                           | 43000          | 3500               | 10300              | 55000              | 94200               |
+|  William Penn University                                                                       | 43100          | 10700              | 26800              | 56800              | 76800               |
+|  San Jose State University                                                                     | 43200          | 13200              | 31200              | 80300              | 107600              |
+|  Xavier University of Louisiana                                                                | 43200          | 13300              | 28600              | 81700              | 127300              |
+|  Cabrillo College                                                                              | 43300          | 6100               | 15000              | 52200              | 81800               |
+|  University of San Diego                                                                       | 43400          | 14500              | 37100              | 81600              | 113700              |
+|  De Anza College                                                                               | 43500          | 8400               | 22500              | 68400              | 98700               |
+|  Alfred University                                                                             | 43500          | 13400              | 26500              | 62400              | 84700               |
+|  Santa Barbara City College                                                                    | 43600          | 5200               | 17200              | 54200              | 80600               |
+|  Loyola Marymount University                                                                   | 43800          | 17300              | 35700              | 81600              | 113000              |
+|  Art Center College of Design                                                                  | 43900          | 7600               | 20900              | 85000              | 114700              |
+|  Hesston College                                                                               | 43900          | 9100               | 20500              | 50300              | 67500               |
+|  University of Phoenix-Phoenix Campus                                                          | 44000          | 13300              | 32300              | 79600              | 110100              |
+|  Saint Johns River State College                                                               | 44000          | 7100               | 15900              | 47100              | 64300               |
+|  Dominican University of California                                                            | 44100          | 9700               | 27000              | 77500              | 124200              |
+|  Menlo College                                                                                 | 44200          | 11000              | 29600              | 78600              | 115800              |
+|  John Brown University                                                                         | 44300          | 11800              | 29500              | 74800              | 106800              |
+|  University of Arkansas                                                                        | 44400          | 13000              | 27800              | 63000              | 87200               |
+|  Wayne State University                                                                        | 44400          | 10100              | 23800              | 61900              | 93500               |
+|  University of Hawaii at Manoa                                                                 | 44500          | 12200              | 28000              | 61900              | 89000               |
+|  Michigan State University                                                                     | 44500          | 17200              | 33100              | 72200              | 98200               |
+|  DePaul University                                                                             | 44700          | 12200              | 30700              | 73600              | 99700               |
+|  Illinois Institute of Technology                                                              | 44800          | 22400              | 42500              | 91400              | 118200              |
+|  Loyola University Maryland                                                                    | 44800          | 24400              | 44800              | 86700              | 123600              |
+|  Bates College                                                                                 | 44900          | 17500              | 34800              | 76500              | 114000              |
+|  American University                                                                           | 45000          | 15000              | 35800              | 81100              | 110700              |
+|  Highlands College of Montana Tech                                                             | 45000          | 10300              | 21600              | 68300              | 103700              |
+|  Montana Tech of the University of Montana                                                     | 45000          | 10300              | 21600              | 68300              | 103700              |
+|  The New England Conservatory of Music                                                         | 45200          | 5500               | 14200              | 48500              | 68400               |
+|  Thomas Edison State College                                                                   | 45200          | 7000               | 22300              | 75900              | 115000              |
+|  University of Missouri-Kansas City                                                            | 45300          | 11200              | 26300              | 66300              | 109500              |
+|  Pomona College                                                                                | 45500          | 17200              | 34300              | 75500              | 133700              |
+|  Notre Dame de Namur University                                                                | 45600          | 12100              | 29700              | 73900              | 96200               |
+|  Thomas More College                                                                           | 45800          | 12500              | 30200              | 65800              | 97100               |
+|  Auburn University                                                                             | 45900          | 13800              | 29900              | 66200              | 91400               |
+|  Fairfield University                                                                          | 45900          | 28300              | 48300              | 93700              | 125500              |
+|  Quinnipiac University                                                                         | 45900          | 21100              | 40100              | 77600              | 102400              |
+|  University of Denver                                                                          | 46100          | 13000              | 31100              | 77400              | 105000              |
+|  Palmer College of Chiropractic-Davenport                                                      | 46100          | 8600               | 18800              | 63600              | 100200              |
+|  California Maritime Academy                                                                   | 46200          | 18800              | 50000              | 110300             | 141200              |
+|  University of Colorado Boulder                                                                | 46200          | 12700              | 28900              | 70400              | 99400               |
+|  Colorado School of Mines                                                                      | 46200          | 25400              | 52600              | 98500              | 136700              |
+|  Mills College                                                                                 | 46400          | 6400               | 21000              | 59400              | 81300               |
+|  Boston University                                                                             | 46400          | 19500              | 39500              | 85100              | 119600              |
+|  Loyola University Chicago                                                                     | 46600          | 15900              | 33300              | 70100              | 96900               |
+|  Drake University                                                                              | 46600          | 20100              | 36000              | 92800              | 130200              |
+|  Samford University                                                                            | 46700          | 12600              | 27700              | 74400              | 124000              |
+|  Louisiana State University Health Sciences Center-New Orleans                                 | 46800          | 25400              | 44200              | 84200              | 117200              |
+|  California Western School of Law                                                              | 47100          | 23100              | 57700              | 122500             | 154300              |
+|  MCPHS University                                                                              | 47100          | 36200              | 73800              | 138300             | 155500              |
+|  Academy of Art University                                                                     | 47300          | 5900               | 17700              | 62100              | 90600               |
+|  University of San Francisco                                                                   | 47300          | 18000              | 37600              | 92800              | 122100              |
+|  Illinois College of Optometry                                                                 | 47400          | 27000              | 52700              | 112300             | 142500              |
+|  University of California-San Diego                                                            | 47800          | 17800              | 38200              | 88100              | 122700              |
+|  Albany College of Pharmacy and Health Sciences                                                | 47900          | 33000              | 58500              | 137800             | 151900              |
+|  Foothill College                                                                              | 48000          | 7300               | 21400              | 83500              | 117600              |
+|  Maine Maritime Academy                                                                        | 48000          | 22900              | 38800              | 108600             | 151100              |
+|  Carleton College                                                                              | 48100          | 11800              | 30100              | 66600              | 105200              |
+|  University of Louisville                                                                      | 48500          | 10200              | 23600              | 55200              | 76600               |
+|  Loma Linda University                                                                         | 48900          | 22600              | 47900              | 98700              | 133800              |
+|  University of California-Davis                                                                | 49100          | 16900              | 36700              | 85500              | 117500              |
+|  St Louis College of Pharmacy                                                                  | 49100          | 31800              | 47600              | 132600             | 147900              |
+|  Bentley University                                                                            | 49200          | 30100              | 50900              | 99400              | 130700              |
+|  The University of Alabama                                                                     | 49300          | 13100              | 27900              | 60700              | 85000               |
+|  Louisiana State University and Agricultural & Mechanical College                              | 49400          | 14400              | 30300              | 68100              | 96600               |
+|  Mount St Mary's College                                                                       | 49500          | 14300              | 31800              | 77900              | 103700              |
+|  Mount St. Mary's College - Doheny Campus                                                      | 49500          | 14300              | 31800              | 77900              | 103700              |
+|  Connecticut Center for Massage Therapy-Newington                                              | 49700          | 5000               | 11500              | 48900              | 71600               |
+|  Saint Mary's College of California                                                            | 49800          | 15500              | 36800              | 89400              | 127400              |
+|  College of the Canyons                                                                        | 50300          | 5400               | 17000              | 54400              | 79400               |
+|  Harvey Mudd College                                                                           | 50800          | 24500              | 45400              | 106800             | 146900              |
+|  Saint Johns University                                                                        | 50900          | 26100              | 39400              | 77000              | 107400              |
+|  William Mitchell College of Law                                                               | 51000          | 31500              | 48800              | 97800              | 148300              |
+|  Georgia Institute of Technology-Main Campus                                                   | 51100          | 23700              | 49000              | 98300              | 130000              |
+|  Life University                                                                               | 51100          | 7100               | 14400              | 56700              | 90300               |
+|  Los Medanos College                                                                           | 51600          | 4000               | 14300              | 53600              | 79900               |
+|  Charles R Drew University of Medicine and Science                                             | 52200          | 7900               | 23800              | 107800             | 136200              |
+|  University of Maryland-College Park                                                           | 52200          | 19100              | 40400              | 82900              | 111500              |
+|  University of Iowa                                                                            | 52300          | 17300              | 33500              | 69600              | 101700              |
+|  University of Illinois at Urbana-Champaign                                                    | 53000          | 20800              | 38000              | 82300              | 112000              |
+|  University of Illinois at Chicago                                                             | 53200          | 14300              | 31900              | 74300              | 106700              |
+|  University of Mississippi                                                                     | 53600          | 13200              | 27500              | 62100              | 96700               |
+|  University of Mississippi Medical Center                                                      | 53600          | 13200              | 27500              | 62100              | 96700               |
+|  Maine College of Art                                                                          | 53700          | 4300               | 11200              | 36100              | 45100               |
+|  College of the Holy Cross                                                                     | 53900          | 31000              | 47200              | 92200              | 136800              |
+|  Brandeis University                                                                           | 54200          | 17900              | 39600              | 82700              | 121300              |
+|  Berk Trade and Business School                                                                | 54200          | 3800               | 13700              | 63200              | 83600               |
+|  Southwestern Law School                                                                       | 54400          | 13600              | 39200              | 114300             | 147700              |
+|  University of the Pacific                                                                     | 54500          | 15900              | 38200              | 116100             | 154800              |
+|  Worcester Polytechnic Institute                                                               | 54700          | 28200              | 53500              | 96600              | 117100              |
+|  California College of the Arts                                                                | 55000          | 3300               | 14700              | 63100              | 100300              |
+|  Barnard College                                                                               | 55000          | 17400              | 36600              | 82000              | 127400              |
+|  University of California-Los Angeles                                                          | 55200          | 13900              | 36700              | 88600              | 128000              |
+|  Portfolio Center                                                                              | 55400          | 2900               | 15500              | 77800              | 137700              |
+|  Marshall B Ketchum University                                                                 | 55600          | 17700              | 40900              | 107900             | 153900              |
+|  Pepperdine University                                                                         | 56000          | 15200              | 37300              | 94600              | 137800              |
+|  Stevens Institute of Technology                                                               | 56200          | 32100              | 60700              | 105300             | 135300              |
+|  Claremont McKenna College                                                                     | 56500          | 18200              | 44300              | 107800             | 164000              |
+|  Trinity College                                                                               | 56600          | 18200              | 37600              | 82900              | 126800              |
+|  Golden Gate University-San Francisco                                                          | 57100          | 18200              | 39000              | 94300              | 122800              |
+|  Golden Gate University-Los Angeles                                                            | 57100          | 18200              | 39000              | 94300              | 122800              |
+|  Golden Gate University-Seattle                                                                | 57100          | 18200              | 39000              | 94300              | 122800              |
+|  Golden Gate University-Silicon Valley                                                         | 57100          | 18200              | 39000              | 94300              | 122800              |
+|  University of Southern California                                                             | 57100          | 15800              | 39400              | 99000              | 143900              |
+|  National University of Health Sciences                                                        | 57100          | 6800               | 22000              | 65100              | 95900               |
+|  George Washington University                                                                  | 57400          | 19300              | 42100              | 96100              | 137200              |
+|  Bowdoin College                                                                               | 57800          | 15300              | 35500              | 80300              | 135100              |
+|  Santa Clara University                                                                        | 57900          | 21600              | 45000              | 99200              | 139000              |
+|  Colby College                                                                                 | 60500          | 15400              | 35000              | 74300              | 111700              |
+|  Samuel Merritt University                                                                     | 62000          | 30700              | 65000              | 138800             | 194400              |
+|  Rush University                                                                               | 62300          | 33600              | 53100              | 131100             | 242500              |
+|  University of Maryland-Baltimore                                                              | 62300          | 35900              | 58400              | 119800             | 158600              |
+|  Washington University in St Louis                                                             | 62300          | 20200              | 40500              | 96600              | 154300              |
+|  Wesleyan University                                                                           | 62400          | 11400              | 29800              | 71900              | 105200              |
+|  Wellesley College                                                                             | 62800          | 18600              | 39100              | 80500              | 121300              |
+|  University of Michigan-Ann Arbor                                                              | 62900          | 17200              | 37500              | 87500              | 128000              |
+|  University of California-Berkeley                                                             | 64300          | 16200              | 38500              | 97600              | 149700              |
+|  University of Colorado Denver                                                                 | 64400          | 21700              | 42200              | 125800             | 157000              |
+|  Coffeyville Community College                                                                 | 64700          | 5100               | 16200              | 44700              | 64800               |
+|  Coffeyville Technical Campus                                                                  | 64700          | 5100               | 16200              | 44700              | 64800               |
+|  Columbus Technical Campus                                                                     | 64700          | 5100               | 16200              | 44700              | 64800               |
+|  Johns Hopkins University                                                                      | 65000          | 23400              | 47900              | 102800             | 148600              |
+|  Emory University                                                                              | 65800          | 18300              | 38400              | 90800              | 135900              |
+|  Tulane University of Louisiana                                                                | 65900          | 13700              | 32000              | 83300              | 126000              |
+|  University of Miami                                                                           | 67800          | 12300              | 31400              | 77800              | 112900              |
+|  Albany Law School                                                                             | 70300          | 16700              | 46100              | 96500              | 134600              |
+|  Boston College                                                                                | 70400          | 24200              | 45100              | 100200             | 160300              |
+|  University of Nebraska Medical Center                                                         | 71600          | 29300              | 46100              | 102600             | 159300              |
+|  California Institute of the Arts                                                              | 72400          | 5400               | 14900              | 60300              | 96900               |
+|  Williams College                                                                              | 75100          | 16800              | 39100              | 97000              | 167700              |
+|  University of Notre Dame                                                                      | 75200          | 26000              | 47400              | 103000             | 154400              |
+|  Midwestern University-Downers Grove                                                           | 78000          | 43500              | 77700              | 151900             | 244200              |
+|  Northwestern University                                                                       | 80500          | 16800              | 40900              | 99400              | 173600              |
+|  Tufts University                                                                              | 86100          | 21600              | 45800              | 104000             | 170300              |
+|  Babson College                                                                                | 87000          | 36700              | 57500              | 124700             | 186700              |
+|  University of California-San Francisco                                                        | 87900          | 40300              | 75600              | 172100             | 250000              |
+|  Georgetown University                                                                         | 92300          | 28500              | 52200              | 136500             | 221900              |
+|  Western University of Health Sciences                                                         | 94100          | 33200              | 76200              | 156700             | 248500              |
+|  Dartmouth College                                                                             | 94100          | 16900              | 42400              | 119600             | 210500              |
+|  University of Chicago                                                                         | 98700          | 16700              | 39100              | 110500             | 195000              |
+|  University of California-Hastings College of Law                                              | 100700         | 25800              | 56700              | 152000             | 240200              |
+|  Yale University                                                                               | 100800         | 15400              | 42400              | 116600             | 184800              |
+|  Monterey Institute of International Studies                                                   | 106400         | 13900              | 33100              | 84800              | 165400              |
+|  Rosalind Franklin University of Medicine and Science                                          | 106400         | 53000              | 89800              | 250000             | 250000              |
+|  California Institute of Technology                                                            | 111800         | 19900              | 41400              | 125400             | 189000              |
+|  Princeton University                                                                          | 115600         | 20800              | 46700              | 134800             | 217200              |
+|  Amherst College                                                                               | 123900         | 18200              | 36400              | 90300              | 172500              |
+|  Harvard University                                                                            | 127000         | 24700              | 51600              | 170100             | 250000              |
+|  Massachusetts Institute of Technology                                                         | 143900         | 30400              | 55600              | 140300             | 242300              |
+|------------------------------------------------------------------------------------------------+----------------+--------------------+--------------------+--------------------+---------------------|
+```
+
+
+
+
+So there you have it: sorting by standard deviation is what really leaves the famous names at top. And it really is true that going to Harvard does not guarantee you will be rich thereafter. [^With the way the government parsed this dataset — which I should say is very, very clean and nicely fixed up for us, by data-science standards — we can't tell, within Harvard, whether it was the children of the rich families who ended up in the higher brackets and the children of the poor families in the
+poor. (I hold 2 conflicting stereotypes: 1. rich kids don't need the money so they will pursue their dream, being a musician or priest or whatever; 2. rich kids have great connections so they get into Wall Street / Hamptons world better.) ] Let's look at just the 90/10 splits there:
+
+
+```
+|------------------------------------------------------------------------------------------------+----------------+--------------------+---------------------|
+|  INSTNM                                                                                        | sd_earn_wne_p9 | pct10_earn_wne_p10 | pct90_earn_wne_p10  |
+|------------------------------------------------------------------------------------------------+----------------+--------------------+---------------------|
+|  New Beginning College of Cosmetology                                                          |                |                    |                     |
+|  Selma University                                                                              |                |                    |                     |
+|  Troy University-Global Campus                                                                 |                |                    |                     |
+|  Alaska Bible College                                                                          |                |                    |                     |
+|  Global MBA Latin American Managers Program Satellite Campus                                   |                |                    |                     |
+|  Frank Lloyd Wright School of Architecture                                                     |                |                    |                     |
+|  Xavier University of Louisiana                                                                | 43200          | 13300              | 127300              |
+|  Cabrillo College                                                                              | 43300          | 6100               | 81800               |
+|  University of San Diego                                                                       | 43400          | 14500              | 113700              |
+|  De Anza College                                                                               | 43500          | 8400               | 98700               |
+|  Alfred University                                                                             | 43500          | 13400              | 84700               |
+|  Santa Barbara City College                                                                    | 43600          | 5200               | 80600               |
+|  Loyola Marymount University                                                                   | 43800          | 17300              | 113000              |
+|  Art Center College of Design                                                                  | 43900          | 7600               | 114700              |
+|  Hesston College                                                                               | 43900          | 9100               | 67500               |
+|  University of Phoenix-Phoenix Campus                                                          | 44000          | 13300              | 110100              |
+|  Saint Johns River State College                                                               | 44000          | 7100               | 64300               |
+|  Dominican University of California                                                            | 44100          | 9700               | 124200              |
+|  Menlo College                                                                                 | 44200          | 11000              | 115800              |
+|  John Brown University                                                                         | 44300          | 11800              | 106800              |
+|  University of Arkansas                                                                        | 44400          | 13000              | 87200               |
+|  Wayne State University                                                                        | 44400          | 10100              | 93500               |
+|  University of Hawaii at Manoa                                                                 | 44500          | 12200              | 89000               |
+|  Michigan State University                                                                     | 44500          | 17200              | 98200               |
+|  DePaul University                                                                             | 44700          | 12200              | 99700               |
+|  Illinois Institute of Technology                                                              | 44800          | 22400              | 118200              |
+|  Loyola University Maryland                                                                    | 44800          | 24400              | 123600              |
+|  Bates College                                                                                 | 44900          | 17500              | 114000              |
+|  American University                                                                           | 45000          | 15000              | 110700              |
+|  Highlands College of Montana Tech                                                             | 45000          | 10300              | 103700              |
+|  Montana Tech of the University of Montana                                                     | 45000          | 10300              | 103700              |
+|  The New England Conservatory of Music                                                         | 45200          | 5500               | 68400               |
+|  Thomas Edison State College                                                                   | 45200          | 7000               | 115000              |
+|  University of Missouri-Kansas City                                                            | 45300          | 11200              | 109500              |
+|  Pomona College                                                                                | 45500          | 17200              | 133700              |
+|  Notre Dame de Namur University                                                                | 45600          | 12100              | 96200               |
+|  Thomas More College                                                                           | 45800          | 12500              | 97100               |
+|  Auburn University                                                                             | 45900          | 13800              | 91400               |
+|  Fairfield University                                                                          | 45900          | 28300              | 125500              |
+|  Quinnipiac University                                                                         | 45900          | 21100              | 102400              |
+|  University of Denver                                                                          | 46100          | 13000              | 105000              |
+|  Palmer College of Chiropractic-Davenport                                                      | 46100          | 8600               | 100200              |
+|  California Maritime Academy                                                                   | 46200          | 18800              | 141200              |
+|  University of Colorado Boulder                                                                | 46200          | 12700              | 99400               |
+|  Colorado School of Mines                                                                      | 46200          | 25400              | 136700              |
+|  Mills College                                                                                 | 46400          | 6400               | 81300               |
+|  Boston University                                                                             | 46400          | 19500              | 119600              |
+|  Loyola University Chicago                                                                     | 46600          | 15900              | 96900               |
+|  Drake University                                                                              | 46600          | 20100              | 130200              |
+|  Samford University                                                                            | 46700          | 12600              | 124000              |
+|  Louisiana State University Health Sciences Center-New Orleans                                 | 46800          | 25400              | 117200              |
+|  California Western School of Law                                                              | 47100          | 23100              | 154300              |
+|  MCPHS University                                                                              | 47100          | 36200              | 155500              |
+|  Academy of Art University                                                                     | 47300          | 5900               | 90600               |
+|  University of San Francisco                                                                   | 47300          | 18000              | 122100              |
+|  Illinois College of Optometry                                                                 | 47400          | 27000              | 142500              |
+|  University of California-San Diego                                                            | 47800          | 17800              | 122700              |
+|  Albany College of Pharmacy and Health Sciences                                                | 47900          | 33000              | 151900              |
+|  Foothill College                                                                              | 48000          | 7300               | 117600              |
+|  Maine Maritime Academy                                                                        | 48000          | 22900              | 151100              |
+|  Carleton College                                                                              | 48100          | 11800              | 105200              |
+|  University of Louisville                                                                      | 48500          | 10200              | 76600               |
+|  Loma Linda University                                                                         | 48900          | 22600              | 133800              |
+|  University of California-Davis                                                                | 49100          | 16900              | 117500              |
+|  St Louis College of Pharmacy                                                                  | 49100          | 31800              | 147900              |
+|  Bentley University                                                                            | 49200          | 30100              | 130700              |
+|  The University of Alabama                                                                     | 49300          | 13100              | 85000               |
+|  Louisiana State University and Agricultural & Mechanical College                              | 49400          | 14400              | 96600               |
+|  Mount St Mary's College                                                                       | 49500          | 14300              | 103700              |
+|  Mount St. Mary's College - Doheny Campus                                                      | 49500          | 14300              | 103700              |
+|  Connecticut Center for Massage Therapy-Newington                                              | 49700          | 5000               | 71600               |
+|  Saint Mary's College of California                                                            | 49800          | 15500              | 127400              |
+|  College of the Canyons                                                                        | 50300          | 5400               | 79400               |
+|  Harvey Mudd College                                                                           | 50800          | 24500              | 146900              |
+|  Saint Johns University                                                                        | 50900          | 26100              | 107400              |
+|  William Mitchell College of Law                                                               | 51000          | 31500              | 148300              |
+|  Georgia Institute of Technology-Main Campus                                                   | 51100          | 23700              | 130000              |
+|  Life University                                                                               | 51100          | 7100               | 90300               |
+|  Los Medanos College                                                                           | 51600          | 4000               | 79900               |
+|  Charles R Drew University of Medicine and Science                                             | 52200          | 7900               | 136200              |
+|  University of Maryland-College Park                                                           | 52200          | 19100              | 111500              |
+|  University of Iowa                                                                            | 52300          | 17300              | 101700              |
+|  University of Illinois at Urbana-Champaign                                                    | 53000          | 20800              | 112000              |
+|  University of Illinois at Chicago                                                             | 53200          | 14300              | 106700              |
+|  University of Mississippi                                                                     | 53600          | 13200              | 96700               |
+|  University of Mississippi Medical Center                                                      | 53600          | 13200              | 96700               |
+|  Maine College of Art                                                                          | 53700          | 4300               | 45100               |
+|  College of the Holy Cross                                                                     | 53900          | 31000              | 136800              |
+|  Brandeis University                                                                           | 54200          | 17900              | 121300              |
+|  Berk Trade and Business School                                                                | 54200          | 3800               | 83600               |
+|  Southwestern Law School                                                                       | 54400          | 13600              | 147700              |
+|  University of the Pacific                                                                     | 54500          | 15900              | 154800              |
+|  Worcester Polytechnic Institute                                                               | 54700          | 28200              | 117100              |
+|  California College of the Arts                                                                | 55000          | 3300               | 100300              |
+|  Barnard College                                                                               | 55000          | 17400              | 127400              |
+|  University of California-Los Angeles                                                          | 55200          | 13900              | 128000              |
+|  Portfolio Center                                                                              | 55400          | 2900               | 137700              |
+|  Marshall B Ketchum University                                                                 | 55600          | 17700              | 153900              |
+|  Pepperdine University                                                                         | 56000          | 15200              | 137800              |
+|  Stevens Institute of Technology                                                               | 56200          | 32100              | 135300              |
+|  Claremont McKenna College                                                                     | 56500          | 18200              | 164000              |
+|  Trinity College                                                                               | 56600          | 18200              | 126800              |
+|  Golden Gate University-San Francisco                                                          | 57100          | 18200              | 122800              |
+|  Golden Gate University-Los Angeles                                                            | 57100          | 18200              | 122800              |
+|  Golden Gate University-Seattle                                                                | 57100          | 18200              | 122800              |
+|  Golden Gate University-Silicon Valley                                                         | 57100          | 18200              | 122800              |
+|  University of Southern California                                                             | 57100          | 15800              | 143900              |
+|  National University of Health Sciences                                                        | 57100          | 6800               | 95900               |
+|  George Washington University                                                                  | 57400          | 19300              | 137200              |
+|  Bowdoin College                                                                               | 57800          | 15300              | 135100              |
+|  Santa Clara University                                                                        | 57900          | 21600              | 139000              |
+|  Colby College                                                                                 | 60500          | 15400              | 111700              |
+|  Samuel Merritt University                                                                     | 62000          | 30700              | 194400              |
+|  Rush University                                                                               | 62300          | 33600              | 242500              |
+|  University of Maryland-Baltimore                                                              | 62300          | 35900              | 158600              |
+|  Washington University in St Louis                                                             | 62300          | 20200              | 154300              |
+|  Wesleyan University                                                                           | 62400          | 11400              | 105200              |
+|  Wellesley College                                                                             | 62800          | 18600              | 121300              |
+|  University of Michigan-Ann Arbor                                                              | 62900          | 17200              | 128000              |
+|  University of California-Berkeley                                                             | 64300          | 16200              | 149700              |
+|  University of Colorado Denver                                                                 | 64400          | 21700              | 157000              |
+|  Coffeyville Community College                                                                 | 64700          | 5100               | 64800               |
+|  Coffeyville Technical Campus                                                                  | 64700          | 5100               | 64800               |
+|  Columbus Technical Campus                                                                     | 64700          | 5100               | 64800               |
+|  Johns Hopkins University                                                                      | 65000          | 23400              | 148600              |
+|  Emory University                                                                              | 65800          | 18300              | 135900              |
+|  Tulane University of Louisiana                                                                | 65900          | 13700              | 126000              |
+|  University of Miami                                                                           | 67800          | 12300              | 112900              |
+|  Albany Law School                                                                             | 70300          | 16700              | 134600              |
+|  Boston College                                                                                | 70400          | 24200              | 160300              |
+|  University of Nebraska Medical Center                                                         | 71600          | 29300              | 159300              |
+|  California Institute of the Arts                                                              | 72400          | 5400               | 96900               |
+|  Williams College                                                                              | 75100          | 16800              | 167700              |
+|  University of Notre Dame                                                                      | 75200          | 26000              | 154400              |
+|  Midwestern University-Downers Grove                                                           | 78000          | 43500              | 244200              |
+|  Northwestern University                                                                       | 80500          | 16800              | 173600              |
+|  Tufts University                                                                              | 86100          | 21600              | 170300              |
+|  Babson College                                                                                | 87000          | 36700              | 186700              |
+|  University of California-San Francisco                                                        | 87900          | 40300              | 250000              |
+|  Georgetown University                                                                         | 92300          | 28500              | 221900              |
+|  Western University of Health Sciences                                                         | 94100          | 33200              | 248500              |
+|  Dartmouth College                                                                             | 94100          | 16900              | 210500              |
+|  University of Chicago                                                                         | 98700          | 16700              | 195000              |
+|  University of California-Hastings College of Law                                              | 100700         | 25800              | 240200              |
+|  Yale University                                                                               | 100800         | 15400              | 184800              |
+|  Monterey Institute of International Studies                                                   | 106400         | 13900              | 165400              |
+|  Rosalind Franklin University of Medicine and Science                                          | 106400         | 53000              | 250000              |
+|  California Institute of Technology                                                            | 111800         | 19900              | 189000              |
+|  Princeton University                                                                          | 115600         | 20800              | 217200              |
+|  Amherst College                                                                               | 123900         | 18200              | 172500              |
+|  Harvard University                                                                            | 127000         | 24700              | 250000              |
+|  Massachusetts Institute of Technology                                                         | 143900         | 30400              | 242300              |
+|------------------------------------------------------------------------------------------------+----------------+--------------------+---------------------|
+```
+
+(note: 250000 as such a round number? That must be a cutoff point for "Over 250000". No way both Rosalind Franklin and Harvard both stop at exactly the same point and it's equal to "one quarter million, exactly"?)
+
+
+
+
+Theoretical SD's are easy, once you've learnt the topic. But data SD's are much harder for me to think about (since the distribution isn't normal and wasn't pre-transformed to look normal before calculating SD). It's certainly a measure of spread, but the quantiles (and in nice level of detail!) are
+
+
+
+
+
+
+
+
+
+# My income inequality measure is bad
+
+```{r}
+earnings %>% filter(income_inequality > 3) %>% select(INSTNM)
+```
+
+
+
+## 90/10 ratio, 10 years on
+
+all across the US, by school..
+
+
+```{r}
+earnings$pct90_earn_wne_p10 / earnings$pct10_earn_wne_p10 -> earnings$ninety_ten_ratio_p10
+earnings$ninety_ten_ratio_p10 %>% stem
+#thanks sitting bull
+earnings %>% filter(ninety_ten_ratio_p10 > 30) %>% select(INSTNM, md_earn_wne_p10, mn_earn_wne_p10, faminc, pct_black)
+#what are income levels like for these crazy 90/10 ratios?
+earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(INSTNM, md_earn_wne_p10, mn_earn_wne_p10, faminc, pct_black, pct_white, pct_born_us) %>% summary
+earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(md_earn_wne_p10, mn_earn_wne_p10, faminc) %>% sapply(stem)
+par(mfrow=c(3,1))
+earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(md_earn_wne_p10, mn_earn_wne_p10, faminc) %>% sapply(kd)   #my kernel-density plot. prettified plot( density( x )): basically a histogram.
+par(mfrow=c(3,1))
+earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(md_earn_wne_p10) %>% unlist %>% kd
+earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(mn_earn_wne_p10) %>% unlist %>% kd
+earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(faminc) %>% unlist %>% na.omit %>% kd
+```
+
+
+
+# Useful filters to keep in mind
+
+- `filter(income_inequality < 3)`
+
+
+
+I guess what is an "outlier" and what is "relevant" is a matter of what you're asking about. I'm just like newspapers / online magazines: I'm interested in the Ivy league masters of the universe and how rich I could be now if I'd only gotten into X.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Vow of Poverty
+
+10th percentile, 10 years on, of those who went to the fancy schools:
+
+
+`<earnings csvcut -c 2,43,49,52 | grep -v Privacy | csvsort -c 2 | csvcut -c1,3 | csvlook`
+
+
+```
+<earnings csvcut -c 2,43,49,52 | grep -v Privacy | csvsort -c 2 | csvcut -c1,3 | sed 's/,/: $/'
+Bentley University: $30100
+The University of Alabama: $13100
+Louisiana State University and Agricultural & Mechanical College: $14400
+Mount St Mary's College: $14300
+Mount St. Mary's College - Doheny Campus: $14300
+Connecticut Center for Massage Therapy-Newington: $5000
+Saint Mary's College of California: $15500
+College of the Canyons: $5400
+Harvey Mudd College: $24500
+Saint Johns University: $26100
+William Mitchell College of Law: $31500
+Georgia Institute of Technology-Main Campus: $23700
+Life University: $7100
+Los Medanos College: $4000
+Charles R Drew University of Medicine and Science: $7900
+University of Maryland-College Park: $19100
+University of Iowa: $17300
+University of Illinois at Urbana-Champaign: $20800
+University of Illinois at Chicago: $14300
+University of Mississippi: $13200
+University of Mississippi Medical Center: $13200
+Maine College of Art: $4300
+College of the Holy Cross: $31000
+Brandeis University: $17900
+Berk Trade and Business School: $3800
+Southwestern Law School: $13600
+University of the Pacific: $15900
+Worcester Polytechnic Institute: $28200
+California College of the Arts: $3300
+Barnard College: $17400
+University of California-Los Angeles: $13900
+Portfolio Center: $2900
+Marshall B Ketchum University: $17700
+Pepperdine University: $15200
+Stevens Institute of Technology: $32100
+Claremont McKenna College: $18200
+Trinity College: $18200
+Golden Gate University-San Francisco: $18200
+Golden Gate University-Los Angeles: $18200
+Golden Gate University-Seattle: $18200
+Golden Gate University-Silicon Valley: $18200
+University of Southern California: $15800
+National University of Health Sciences: $6800
+George Washington University: $19300
+Bowdoin College: $15300
+Santa Clara University: $21600
+Colby College: $15400
+Samuel Merritt University: $30700
+Rush University: $33600
+University of Maryland-Baltimore: $35900
+Washington University in St Louis: $20200
+Wesleyan University: $11400
+Wellesley College: $18600
+University of Michigan-Ann Arbor: $17200
+University of California-Berkeley: $16200
+University of Colorado Denver: $21700
+Coffeyville Community College: $5100
+Coffeyville Technical Campus: $5100
+Columbus Technical Campus: $5100
+Johns Hopkins University: $23400
+Emory University: $18300
+Tulane University of Louisiana: $13700
+University of Miami: $12300
+Albany Law School: $16700
+Boston College: $24200
+University of Nebraska Medical Center: $29300
+California Institute of the Arts: $5400
+Williams College: $16800
+University of Notre Dame: $26000
+Midwestern University-Downers Grove: $43500
+Northwestern University: $16800
+Tufts University: $21600
+Babson College: $36700
+University of California-San Francisco: $40300
+Georgetown University: $28500
+Western University of Health Sciences: $33200
+Dartmouth College: $16900
+University of Chicago: $16700
+University of California-Hastings College of Law: $25800
+Yale University: $15400
+Monterey Institute of International Studies: $13900
+Rosalind Franklin University of Medicine and Science: $53000
+California Institute of Technology: $19900
+Princeton University: $20800
+Amherst College: $18200
+Harvard University: $24700
+Massachusetts Institute of Technology: $30400
+```
+
+
+```
+<earnings csvcut -c 2,43,49,52,48 | grep -v Privacy | csvsort -c 2 | csvcut -c1,3,5 | (head -1; tail -25) | csvlook
+<earnings csvcut -c 2,43,49,52,48 | grep -v Privacy | csvsort -c 2 | csvcut -c1,3,5 | (head -1; tail -55) | sed 's/,/: $/' | sed 's/,/ (average: $/' | sed 's/$/\)/'
+INSTNM: $pct10_earn_wne_p10 (average: $md_earn_wne_p10)
+University of Nevada-Reno: $12700 (average: $45500)
+Bethune-Cookman University: $6800 (average: $28700)
+Butler University: $19500 (average: $52400)
+Southern Arkansas University Main Campus: $9800 (average: $35900)
+Le Cordon Bleu College of Culinary Arts-San Francisco: $7100 (average: $32800)
+Sacred Heart University: $17100 (average: $54100)
+Northwestern Health Sciences University: $8200 (average: $42500)
+California State University-Fresno: $10000 (average: $43200)
+Jacksonville University: $13800 (average: $47700)
+Le Cordon Bleu College of Culinary Arts-Chicago: $7500 (average: $32800)
+Michigan Technological University: $18100 (average: $60100)
+University of Minnesota-Twin Cities: $16100 (average: $47800)
+University of Nebraska-Lincoln: $16100 (average: $43800)
+Nebraska College of Technical Agriculture: $16100 (average: $43800)
+University of the Southwest: $10400 (average: $40600)
+Wheaton College: $7700 (average: $42600)
+Ringling College of Art and Design: $6900 (average: $32800)
+University of Florida: $15900 (average: $51300)
+Mercer University: $13400 (average: $46600)
+University of Arizona: $12100 (average: $44400)
+University of Minnesota-Duluth: $15300 (average: $43300)
+Drew University: $13100 (average: $50900)
+University of Arkansas for Medical Sciences: $24500 (average: $62400)
+Kalamazoo College: $10600 (average: $49400)
+University of South Alabama: $10500 (average: $38300)
+Alaska Pacific University: $10800 (average: $47400)
+University of California-Santa Barbara: $13500 (average: $52000)
+Mississippi College: $11700 (average: $38200)
+Holy Names University: $10600 (average: $50100)
+Logan University: $6700 (average: $36200)
+University of Georgia: $14200 (average: $46500)
+Lake Forest College: $14300 (average: $48100)
+University of Missouri-Columbia: $16200 (average: $46000)
+Divers Academy International: $10100 (average: $48700)
+DePauw University: $16700 (average: $47800)
+Massachusetts Maritime Academy: $26300 (average: $79500)
+Colorado Technical University-Colorado Springs: $11800 (average: $44100)
+Louisiana Tech University: $11700 (average: $41100)
+Olivet Nazarene University: $9600 (average: $37700)
+Bellevue University: $18200 (average: $52200)
+Creighton University: $22800 (average: $57800)
+Rensselaer Hartford Graduate Center Inc: $37000 (average: $81700)
+Trinity Christian College: $11300 (average: $41400)
+Northeastern University: $18800 (average: $60100)
+Rutgers University-Camden: $15400 (average: $54800)
+Rutgers University-New Brunswick: $15400 (average: $54800)
+Rutgers University-Newark: $15400 (average: $54800)
+Regis University: $15100 (average: $53100)
+California Polytechnic State University-San Luis Obispo: $15700 (average: $60900)
+University of Connecticut: $19000 (average: $53900)
+National Louis University: $9600 (average: $43700)
+Beth Medrash Govoha: $3500 (average: $23000)
+William Penn University: $10700 (average: $41200)
+San Jose State University: $13200 (average: $54600)
+Xavier University of Louisiana: $13300 (average: $46500)
+Cabrillo College: $6100 (average: $32100)
+University of San Diego: $14500 (average: $56300)
+De Anza College: $8400 (average: $43600)
+Alfred University: $13400 (average: $42300)
+Santa Barbara City College: $5200 (average: $33900)
+Loyola Marymount University: $17300 (average: $55600)
+Art Center College of Design: $7600 (average: $51700)
+Hesston College: $9100 (average: $35400)
+University of Phoenix-Phoenix Campus: $13300 (average: $53400)
+Saint Johns River State College: $7100 (average: $29500)
+Dominican University of California: $9700 (average: $51400)
+Menlo College: $11000 (average: $50600)
+John Brown University: $11800 (average: $46200)
+University of Arkansas: $13000 (average: $43600)
+Wayne State University: $10100 (average: $41500)
+University of Hawaii at Manoa: $12200 (average: $44300)
+Michigan State University: $17200 (average: $49800)
+DePaul University: $12200 (average: $50900)
+Illinois Institute of Technology: $22400 (average: $68200)
+Loyola University Maryland: $24400 (average: $62100)
+Bates College: $17500 (average: $53500)
+American University: $15000 (average: $55900)
+Highlands College of Montana Tech: $10300 (average: $39800)
+Montana Tech of the University of Montana: $10300 (average: $39800)
+The New England Conservatory of Music: $5500 (average: $29500)
+Thomas Edison State College: $7000 (average: $49100)
+University of Missouri-Kansas City: $11200 (average: $43100)
+Pomona College: $17200 (average: $52600)
+Notre Dame de Namur University: $12100 (average: $51300)
+Thomas More College: $12500 (average: $45800)
+Auburn University: $13800 (average: $45400)
+Fairfield University: $28300 (average: $69000)
+Quinnipiac University: $21100 (average: $56400)
+University of Denver: $13000 (average: $51400)
+Palmer College of Chiropractic-Davenport: $8600 (average: $39700)
+California Maritime Academy: $18800 (average: $81100)
+University of Colorado Boulder: $12700 (average: $48000)
+Colorado School of Mines: $25400 (average: $74700)
+Mills College: $6400 (average: $39000)
+Boston University: $19500 (average: $60600)
+Loyola University Chicago: $15900 (average: $50600)
+Drake University: $20100 (average: $55700)
+Samford University: $12600 (average: $45800)
+Louisiana State University Health Sciences Center-New Orleans: $25400 (average: $61100)
+California Western School of Law: $23100 (average: $85900)
+MCPHS University: $36200 (average: $116400)
+Academy of Art University: $5900 (average: $36100)
+University of San Francisco: $18000 (average: $61000)
+Illinois College of Optometry: $27000 (average: $81400)
+University of California-San Diego: $17800 (average: $59600)
+Albany College of Pharmacy and Health Sciences: $33000 (average: $110600)
+Foothill College: $7300 (average: $47600)
+Maine Maritime Academy: $22900 (average: $74700)
+Carleton College: $11800 (average: $46100)
+University of Louisville: $10200 (average: $37700)
+Loma Linda University: $22600 (average: $72800)
+University of California-Davis: $16900 (average: $57100)
+St Louis College of Pharmacy: $31800 (average: $111600)
+Bentley University: $30100 (average: $74900)
+The University of Alabama: $13100 (average: $42400)
+Louisiana State University and Agricultural & Mechanical College: $14400 (average: $45900)
+Mount St Mary's College: $14300 (average: $50200)
+Mount St. Mary's College - Doheny Campus: $14300 (average: $50200)
+Connecticut Center for Massage Therapy-Newington: $5000 (average: $27300)
+Saint Mary's College of California: $15500 (average: $59000)
+College of the Canyons: $5400 (average: $34200)
+Harvey Mudd College: $24500 (average: $78600)
+Saint Johns University: $26100 (average: $55900)
+William Mitchell College of Law: $31500 (average: $68200)
+Georgia Institute of Technology-Main Campus: $23700 (average: $74000)
+Life University: $7100 (average: $32200)
+Los Medanos College: $4000 (average: $34300)
+Charles R Drew University of Medicine and Science: $7900 (average: $63000)
+University of Maryland-College Park: $19100 (average: $59100)
+University of Iowa: $17300 (average: $48700)
+University of Illinois at Urbana-Champaign: $20800 (average: $56600)
+University of Illinois at Chicago: $14300 (average: $51600)
+University of Mississippi: $13200 (average: $40600)
+University of Mississippi Medical Center: $13200 (average: $40600)
+Maine College of Art: $4300 (average: $23700)
+College of the Holy Cross: $31000 (average: $63700)
+Brandeis University: $17900 (average: $58800)
+Berk Trade and Business School: $3800 (average: $33700)
+Southwestern Law School: $13600 (average: $69700)
+University of the Pacific: $15900 (average: $66400)
+Worcester Polytechnic Institute: $28200 (average: $77600)
+California College of the Arts: $3300 (average: $35700)
+Barnard College: $17400 (average: $57400)
+University of California-Los Angeles: $13900 (average: $59200)
+Portfolio Center: $2900 (average: $47900)
+Marshall B Ketchum University: $17700 (average: $70400)
+Pepperdine University: $15200 (average: $61400)
+Stevens Institute of Technology: $32100 (average: $82800)
+Claremont McKenna College: $18200 (average: $63600)
+Trinity College: $18200 (average: $56100)
+Golden Gate University-San Francisco: $18200 (average: $64200)
+Golden Gate University-Los Angeles: $18200 (average: $64200)
+Golden Gate University-Seattle: $18200 (average: $64200)
+Golden Gate University-Silicon Valley: $18200 (average: $64200)
+University of Southern California: $15800 (average: $66100)
+National University of Health Sciences: $6800 (average: $45400)
+George Washington University: $19300 (average: $64500)
+Bowdoin College: $15300 (average: $54800)
+Santa Clara University: $21600 (average: $67700)
+Colby College: $15400 (average: $53000)
+Samuel Merritt University: $30700 (average: $111500)
+Rush University: $33600 (average: $74300)
+University of Maryland-Baltimore: $35900 (average: $80400)
+Washington University in St Louis: $20200 (average: $62300)
+Wesleyan University: $11400 (average: $50900)
+Wellesley College: $18600 (average: $56700)
+University of Michigan-Ann Arbor: $17200 (average: $57900)
+University of California-Berkeley: $16200 (average: $62700)
+University of Colorado Denver: $21700 (average: $73800)
+Coffeyville Community College: $5100 (average: $29800)
+Coffeyville Technical Campus: $5100 (average: $29800)
+Columbus Technical Campus: $5100 (average: $29800)
+Johns Hopkins University: $23400 (average: $69200)
+Emory University: $18300 (average: $59000)
+Tulane University of Louisiana: $13700 (average: $52400)
+University of Miami: $12300 (average: $52400)
+Albany Law School: $16700 (average: $71200)
+Boston College: $24200 (average: $67000)
+University of Nebraska Medical Center: $29300 (average: $64200)
+California Institute of the Arts: $5400 (average: $32500)
+Williams College: $16800 (average: $58100)
+University of Notre Dame: $26000 (average: $69400)
+Midwestern University-Downers Grove: $43500 (average: $117000)
+Northwestern University: $16800 (average: $64100)
+Tufts University: $21600 (average: $67800)
+Babson College: $36700 (average: $85500)
+University of California-San Francisco: $40300 (average: $118900)
+Georgetown University: $28500 (average: $83300)
+Western University of Health Sciences: $33200 (average: $123200)
+Dartmouth College: $16900 (average: $67100)
+University of Chicago: $16700 (average: $62800)
+University of California-Hastings College of Law: $25800 (average: $107900)
+Yale University: $15400 (average: $66000)
+Monterey Institute of International Studies: $13900 (average: $53400)
+Rosalind Franklin University of Medicine and Science: $53000 (average: $166200)
+California Institute of Technology: $19900 (average: $74000)
+Princeton University: $20800 (average: $75100)
+Amherst College: $18200 (average: $56800)
+Harvard University: $24700 (average: $87200)
+Massachusetts Institute of Technology: $30400 (average: $91600)
+```
+
