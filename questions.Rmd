@@ -1,24 +1,28 @@
 #Questions
 
 
-- is fsend_i always decreasing?   **Answer:** No. Check Morehouse. A blip at 5. \\\\/ shape. (I assume 5 is the max and the ambitious tryers will max out.)
+- is `fsend_i` always decreasing?   **Answer:** No. Check Morehouse. A blip at 5. `\\\\/` shape. (I assume 5 is the max and the ambitious tryers will max out.)
 - do rows (colleges) with PrivacySuppressed or NULL actually display some data?  
 - compare histograms of income to US averages 
 - subtract family income from student income 
 - NWNE? WNE?
 - the counts nearly always integer?
-- pct_ba = ?  It's not black + asian (tested ✓)
+- `pct_ba` = ?  It's not black + asian (tested ✓)
 - lowest % aged under 24, lowest age of entry, % independent
 - inequality amongst schools (mean/median ratio of hh inc)
 - how well do various measures of "independent" go together? (married, veteran, agesquared…)
 - how well do pell grants go with low hh income?
-- can you use these stats to gauge 
+- can you use these stats to gauge other questions people ask about 
+- can you cross-correlate this with information about majors or (almost certainly yes to this one:) SAT scores?
+- can you query anonymised but individual-level data from the API?
+- do the different sizes of schools mess up "predictive" analysis? what do you get if you divide by cohort size and kernel-weight by 
+- do nat'l-level trends (eg, job market more in favour of buyers during certain years) mess up the 6p/10p cohort differential? (Or are these cohorts mixed across different calendar-years?)
 
 
 #### ending p means…?
 
 they are cohorts.
-- p6 is 6 years after graduation.
+- `p6` is 6 years after graduation.
 - p10 is 10 years after graduation.
 
 ### fsend means … ?
@@ -29,6 +33,10 @@ Two uses:
 - how many people filled out fafsa's (measure of aid, vs say poverty or log hh inc)
 - how many people conscientiously / competitively applied to many schools
 
+
+
+#### aian *and* asian?
+Yep. `aian` = American Indian / Alaska Native. (latter includes Aleutian island groups … I guess Aleutians and Massasoit have little in common historically! ;) although now these diverse groups share radio stations and cultural concerns as ⊂ of the USA / managed by Bureau of Indian Affairs, etc.)
 
 
 
