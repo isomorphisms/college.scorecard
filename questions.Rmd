@@ -331,6 +331,7 @@ earnings %>% select(INSTNM, loan_ever, age_entry, age_curvature, veteran, faminc
 
 
 
+```
                                                INSTNM faminc income_inequality
 5910                           Wake Forest University 124215               1.2
 5911  University of North Texas Health Science Center  22394               1.5
@@ -357,7 +358,7 @@ earnings %>% select(INSTNM, loan_ever, age_entry, age_curvature, veteran, faminc
 5933                              Boise Bible College  44069               1.2
 5934                              Stanford University  83178               1.5
 5935            Massachusetts Institute of Technology  95849               1.2
-
+```
 
 
 
