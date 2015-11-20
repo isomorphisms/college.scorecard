@@ -1,7 +1,7 @@
 #Questions
 
 
-- is fsend_i always decreasing?  
+- is fsend_i always decreasing?   **Answer:** No. Check Morehouse. A blip at 5. \\\\/ shape. (I assume 5 is the max and the ambitious tryers will max out.)
 - do rows (colleges) with PrivacySuppressed or NULL actually display some data?  
 - compare histograms of income to US averages 
 - subtract family income from student income 
@@ -47,6 +47,7 @@ Two uses:
 - √squared age − age ✓
 - log versus log of total
 
+
 ```{r difference.in.logs}
 #na.omit(earnings$ln_median_hh_inc) - na.omit(log(earnings$median_hh_inc)) %>% some(500) %>% stem
 #na.omit(earnings$ln_median_hh_inc) - na.omit(log(earnings$median_hh_inc)) %>% kd
@@ -67,6 +68,10 @@ OK, so this is just a computed column.
 
 Maybe just SD / mean is good enough?
 
+
+
+- look at mens' versus womens' colleges. (hah!)
+- (but take out beauty schools)
 
 
 
@@ -174,6 +179,7 @@ Manhattan School of Computer Technology
 
 
 ## Schools with the highest ratio of mean : median family income
+```
 Austin Graduate School of Theology
 Albany Medical College
 House of Heavilin Beauty College-Raymore
@@ -229,6 +235,7 @@ Claremont School of Theology
 Massachusetts School of Barbering
 Charles A Jones Career and Education Center
 Advance Science Institute
+```
 
 ### ok, but how about non-low family income *and* high ratio of mean:median ?
 
@@ -249,6 +256,7 @@ Advance Science Institute
 
 
 # Schools with greatest standard deviation of 10-year incomes
+```
 A T Still University of Health SciencesMedical College of Wisconsin
 West Virginia School of Osteopathic Medicine
 Stanford University
@@ -308,7 +316,7 @@ Medical University of South Carolina
 Lafayette College
 Colgate University
 Brooklyn Law School
-
+```
 
 
 
@@ -1091,3 +1099,65 @@ Harvard University: $24700 (average: $87200)
 Massachusetts Institute of Technology: $30400 (average: $91600)
 ```
 
+
+
+
+
+
+# more observations
+- caltech family income is way lower than MIT family income
+
+
+
+
+
+
+# rich kid schools
+
+```{r}
+earnings %>% filter(faminc > 100000) %>% select(INSTNM,dependent,veteran,married,pct_black,mn_earn_wne_p6,pct10_earn_wne_p10,pct25_earn_wne_p10,pct75_earn_wne_p10,pct90_earn_wne_p10, gt_25k_p10)
+```
+
+Look at chance of being poor (<25k) or rich (90th percentile) for 
+
+
+Maybe average quantiles across these school types?
+
+
+Also want to do a straight-up regression on this.
+```{r does.rich.family.make.you.rich}
+#top 90 percent per your school?
+lm( data=earnings, pct90_earn_wne_p10 ~ faminc )
+lm( data=earnings, pct90_earn_wne_p10 ~ lnfaminc )   #what does this mean?! try with square term
+#prevent poverty?
+lm( data=earnings, gt_25k_p6 ~ faminc )
+lm( data=earnings, gt_25k_p10 ~ faminc ) #hmm, at least the beta (amount of influence) goes down from 6-10 years .. a bit
+#typical income
+lm( data=earnings, mn_earn_wne_p6 ~ faminc )
+lm( data=earnings, mn_earn_wne_p10 ~ faminc )
+#now that's weird ... family income has more impact on *10-year* mean earnings than on 6-year … even though the likelihood of getting out of >25k becomes less influential...
+#holds up in rlm's as well...
+rlm( data=earnings, mn_earn_wne_p6 ~ faminc )
+rlm( data=earnings, mn_earn_wne_p10 ~ faminc )
+#… throw in square term as well 
+```
+
+(and of course run these too with `MASS::rlm`)
+
+
+(obviously this is not on an individual level. but still a differetn way to crosscut some tax data that people might not have studied otherwise [^how would you get family's income except through a FAFSA?]
+
+
+
+
+
+
+# cosmetology, nontraditional medicine, and success schools
+
+I would like to figure out how to disseminate the government-provided information in a way that's more appropriate than GitHub, to reach the target market for cosmetology schools, beauty schools, school of success, etc. Just from browsing this data-set, the low incomes and terrible performance of these schools keeps showing up in my statistics. On the other hand, there's a low chance that the target students are curling the government's open-data API.
+
+Maybe pamphlets? I could make a LaTeX or Rmd pamphlet, generate printable PDF's about each of the really poorly performing schools, and then leave it up to people in the target geography to disseminate the pamphlets?
+
+Maybe websites? I could make an HTML page with the equivalent information about the pamphlet, upload the static site to S3, and then target the name of the poorly performing schools in google ads? (Or do these people use another search engine?!?)
+
+I don't really want to pay for printing, distribution, or google ads though.
