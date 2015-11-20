@@ -129,6 +129,7 @@ Goal to subset or "mod out" by these?
 
 
 ## Schools with the greatest "age curvature" (√age²−age)
+```
 Canada College
 Laurel University
 King's University
@@ -174,6 +175,7 @@ Lebanon College
 Moler Barber College
 Bramson ORT College
 Manhattan School of Computer Technology
+```
 
 
 
