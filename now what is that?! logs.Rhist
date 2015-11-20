@@ -1,0 +1,170 @@
+getOption()$help.port
+getOption('help.port')
+earnings <- read.csv('earnings', header=TRUE)
+earnings %>% names
+options(width=120)
+earnings %>% names
+options(width=200)
+earnings %>% names
+earnings$pct10_earn_wne_p6 %>% stem
+earnings$pct10_earn_wne_p6 %>% as.numeric %>% stem
+earnings$pct10_earn_wne_p8 %>% as.numeric %>% stem
+earnings$pct10_earn_wne_p8 %>% some %>% as.numeric %>% stem
+some.default
+some <- car::some
+require(car)
+some <- car::some
+some
+unload('package:car')
+detach('package:car')
+?detach
+detach(package:car)
+car
+ls(car)
+ls('car')
+ls('package:car')
+earnings %>% names
+options(width=220)
+earnings %>% names
+options(width=210)
+earnings %>% names
+source('/etc/R/some.R')
+earnings$pct10_earn_wne_p8 %>% some %>% as.numeric %>% stem
+earnings$pct10_earn_wne_p6 %>% some(50) %>% as.numeric %>% stem
+earnings$pct10_earn_wne_p6 %>% some(100) %>% as.numeric %>% stem
+earnings$pct10_earn_wne_p6 %>% some(300) %>% as.numeric %>% stem
+earnings$pct10_earn_wne_p8 %>% some(300) %>% as.numeric %>% stem
+earnings$pct10_earn_wne_p10 %>% some(300) %>% as.numeric %>% stem
+earnings %>% names
+earnings$pct10_earn_wne_p10 %>% some(30) 
+require(dplyr)
+earnings %>% some(20)
+options(digits=3)
+earnings %>% some(20)
+?read.csv
+class(earnings$count_nwne_p8)
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE)
+class(earnings$count_nwne_p8)
+earnings %>% names
+earnings[,3:106] %>% some
+type.convert(earnings[,3:106] , na.strings='PrivacySuppressed',numerals='allow.loss') %>% some
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed')
+earnings[,3:106] %>% some
+earnings$gt_25k_p6
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed', encoding='ASCII')
+earnings$gt_25k_p6
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed', encoding='ASCII', numerals='allow.loss')
+earnings$gt_25k_p6
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed', encoding='ASCII', numerals='allow.loss', as.is=c(rep('character',2),rep('numeric',104)) )
+earnings %>% names
+earnings$gt_25k_p6
+c(rep('char',2),rep('num',5))
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed', encoding='ASCII', numerals='allow.loss' )
+earnings %>% lapply(FUN=class)
+head(earnings)
+earnings %>% lapply(FUN=class) %>% length
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed', encoding='ASCII', numerals='allow.loss', as.is=c('integer','character',rep('numeric',104)) )
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed', encoding='ASCII', numerals='allow.loss', as.is=c('integer','character',rep('numeric',103)) )
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed', encoding='ASCII', numerals='allow.loss', as.is=c('integer','character',rep('numeric',104)) )
+earnings %>% lapply(FUN=class) 
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings='PrivacySuppressed', encoding='ASCII', numerals='allow.loss', colClasses=c('integer','character',rep('numeric',104)) )
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings=c('PrivacySuppressed','NULL'), encoding='ASCII', numerals='allow.loss', colClasses=c('integer','character',rep('numeric',104)) )
+earnings %>% lapply(FUN=class) 
+earnings <- read.csv('earnings', header=TRUE, stringsAsFactors=FALSE, na.strings=c('PrivacySuppressed','NULL'), encoding='ASCII', numerals='allow.loss' )
+earnings %>% lapply(FUN=class) 
+options(digits=1)
+head(earnings)
+options(scipen=2)
+head(earnings)
+options(scipen=0)
+head(earnings)
+?options
+options(scipen=-2)
+head(earnings)
+options(scipen=-4)
+head(earnings)
+options(scipen=-3)
+head(earnings)
+options(scipen=-2)
+head(earnings)
+options(scipen=-1)
+head(earnings)
+options(scipen=-5)
+head(earnings)
+options(digits=2)
+head(earnings)
+options(digits=1)
+some(earnings)
+savehistory("correctly loaded earnings")
+saveRDS("earnings.rds")
+saveRDS(file="earnings.rds")
+saveRDS(earnings, file="earnings.rds")
+earnings$pct10_earn_wne_p10 %>% some(300) %>% stem
+kd
+source('/etc/Rprofile.site.bak')
+kd
+earnings$pct10_earn_wne_p10 %>% some(300) %>% stem
+earnings$pct10_earn_wne_p10 %>% some(300) %>% Hist
+kd <- function(x,...) plot( density(x), col='#333333', ... )
+Hist <- function(x,...) hist( x, border='white', col='#333333', ...)
+earnings$pct10_earn_wne_p10 %>% some(300) %>% Hist
+Hist <- function(x,...) hist( x, border='white', col='#333333', main=paste('Histogram of', substitute(x)), ...)
+earnings$pct10_earn_wne_p10 %>% some(300) %>% Hist
+Hist <- function(x,...) hist( x, border='white', col='#333333', main=paste('Histogram of', substitute(substitute(x))), ...)
+earnings$pct10_earn_wne_p10 %>% some(300) %>% Hist
+Hist <- function(x,...) hist( x, border='white', col='#333333', main=paste('Histogram of', substitute(x)), ...)
+earnings$pct10_earn_wne_p10 %>% some(300) %>% Hist
+earnings$pct10_earn_wne_p10 %>% some(3000) %>% Hist
+earnings$pct10_earn_wne_p10  %>% Hist
+earnings %>% names
+options(width=110)
+earnings %>% names
+earnings$fsend_2  %>% Hist
+earnings$age_entry  %>% Hist
+earnings$loan_ever  %>% Hist
+earnings$poverty_rate  %>% Hist
+earnings$pct_grad_prof  %>% Hist
+earnings$pell_ever  %>% Hist
+require(dplyr)
+subset(earnings, earnings$gt_25k_p7 < .3) %>% .$INSTNM
+subset(earnings, earnings$gt_25k_p7 < .2) %>% .$INSTNM
+subset(earnings, earnings$gt_25k_p7 > .9) %>% .$INSTNM
+subset(earnings, earnings$gt_25k_p9 > .9) %>% .$INSTNM
+sort(earnings, decreasing='pct_white') %>% head
+sort(earnings, by=pct_white) %>% head
+?sort
+sort(earnings$pct_white) %>% head
+sort(earnings$pct_white, decreasing=T) %>% head
+summary(earnings$pct_white)
+stem(earnings$pct_white %>% some(500))
+?sort
+?sort.by
+?sort
+??sort
+earnings %>% select(INSTNM,loan_ever, ageege24, first_gen, md_faminc, pct_white, pct_black, pct_grad_prof, pct_born_us) %>% some
+earnings %>% select(INSTNM,loan_ever, agege24, first_gen, md_faminc, pct_white, pct_black, pct_grad_prof, pct_born_us) %>% some
+earnings %>% select(INSTNM,loan_ever, agege24, first_gen, md_faminc, pct_white, pct_black, pct_grad_prof, pct_born_us, poverty_rate, unemp_rate, median_hh_inc) %>% some
+earnings %>% names
+earnings %>% select(INSTNM,loan_ever, agege24, first_gen, md_faminc, pct_white, pct_black, pct_grad_prof, pct_born_us, poverty_rate, unemp_rate, median_hh_inc, gt_25k_p7, gt_25k_p8, gt_25k_p9) %>% some
+earnings %>% select(INSTNM,loan_ever, agege24, first_gen, md_faminc, pct_white, pct_black, pct_grad_prof, pct_born_us, poverty_rate, unemp_rate, median_hh_inc, gt_25k_p7, gt_25k_p8, gt_25k_p9, gt_25k_p10) %>% some
+earnings %>% select(INSTNM,loan_ever, agege24, first_gen, md_faminc, pct_white, pct_black, pct_grad_prof, pct_born_us, poverty_rate, unemp_rate, median_hh_inc, gt_25k_p7, gt_25k_p8, gt_25k_p9, gt_25k_p10) %>% some
+savehistory("finding some interesting stuff.Rhist")
+earnings %>% some %>% select(poverty_rate) %>% stem
+earnings %>% some %>% .$poverty_rate %>% stem
+earnings %>% some(300) %>% .$poverty_rate %>% stem
+earnings %>% some(300) %>% .$poverty_rate %>% stem
+earnings %>% some(300) %>% .$poverty_rate %>% stem
+earnings %>% some(300) %>% .$poverty_rate %>% stem
+earnings %>% some(300) %>% .$poverty_rate %>% stem
+names(earnings)
+earnings$age_curvature <- sqrt(earnings$age_entry_sq)-earnings$age_entry
+earnings$fsend_count %>% some(500) %>% stem
+earnings$faminc / earnings$md_faminc -> earnings$income_inequality
+earnings$income_inequality %>% some(500) %>% stem
+earnings$income_inequality %>% some(500) %>% stem
+earnings$faminc / earnings$md_faminc -> earnings$family_income_inequality
+earnings %>% names
+earnings %>% select( INSTNM, loan_ever, age_entry, age_curvature, median_hh_inc, ln_median_hh_inc ) %>% some
+earnings$ln_median_hh_inc - log(earnings$median_hh_inc) %>% some(500) %>% stem
+savehistory("now what is that?!.Rhist")
+savehistory("now what is that?! logs.Rhist")
