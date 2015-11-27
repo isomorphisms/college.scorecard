@@ -771,12 +771,12 @@ earnings %>% filter(ninety_ten_ratio_p10 > 30) %>% select(INSTNM, md_earn_wne_p1
 #what are income levels like for these crazy 90/10 ratios?
 earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(INSTNM, md_earn_wne_p10, mn_earn_wne_p10, faminc, pct_black, pct_white, pct_born_us) %>% summary
 earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(md_earn_wne_p10, mn_earn_wne_p10, faminc) %>% sapply(stem)
-par(mfrow=c(3,1))
 earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(md_earn_wne_p10, mn_earn_wne_p10, faminc) %>% sapply(kd)   #my kernel-density plot. prettified plot( density( x )): basically a histogram.
 par(mfrow=c(3,1))
 earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(md_earn_wne_p10) %>% unlist %>% kd
 earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(mn_earn_wne_p10) %>% unlist %>% kd
 earnings %>% filter(ninety_ten_ratio_p10 > 20) %>% select(faminc) %>% unlist %>% na.omit %>% kd
+par(mfrow=c(1,1))
 ```
 
 
@@ -1149,8 +1149,16 @@ lm( data=earnings, mn_earn_wne_p10 ~ faminc )
 #now that's weird ... family income has more impact on *10-year* mean earnings than on 6-year … even though the likelihood of getting out of >25k becomes less influential...
 #holds up in rlm's as well...
 rlm( data=earnings, mn_earn_wne_p6 ~ faminc )
-rlm( data=earnings, mn_earn_wne_p10 ~ faminc )
-#… throw in square term as well 
+rlm( data=earnings, mn_earn_wne_p10 ~ faminc ) # … throw in square term as well 
+#visually
+attach(earnings)
+plot( y=mn_earn_wne_p10, x=faminc, pch=20, col=rgb(.1,.1,.1,.1), log="y" )
+lines( lty='dashed', col='red', y=1:130*1e3, x=1:130*1e3 )
+legend('topright', legend='parity', fill='red',border='white',bty='n')
+plot( lm( log(mn_earn_wne_p10) ~ faminc ) , pch=20, col=rgb(.1,.1,.1,.1) )
+#who were these high leverage factors?
+data.frame( residual=md_earn_wne_p10 - 20e3 - .31 * faminc, faminc, INSTNM) %>% arrange(residual) %>% na.omit %>% tail(50)
+data.frame( residual=md_earn_wne_p10 - 20e3 - .31 * faminc, faminc, INSTNM) %>% arrange(residual) %>% head(50)
 ```
 
 (and of course run these too with `MASS::rlm`)
@@ -1172,3 +1180,37 @@ Maybe pamphlets? I could make a LaTeX or Rmd pamphlet, generate printable PDF's 
 Maybe websites? I could make an HTML page with the equivalent information about the pamphlet, upload the static site to S3, and then target the name of the poorly performing schools in google ads? (Or do these people use another search engine?!?)
 
 I don't really want to pay for printing, distribution, or google ads though.
+
+
+
+
+
+
+
+# no child is an island
+
+People who couldn't afford the tuition 10 years out
+
+
+- analogy with Ford employees being able to afford a Model T
+- mean or Xth percentile below tuition
+- doesn't include other costs of life
+- choose an index, like 1/2, and see if Xth percentile beats that † (model of amortisation not as visceral as one of the lower percentiles not even being able to afford a year out of their whole year's work)
+- need to actually get tuition costs! US News & World Report has them.
+- could use a set tuition number like $30k or $40k
+
+
+
+## The fathers have eaten sour grapes
+
+People who make more than their parents†
+
+
+† NB, this is invalid because we're dealing with averages across various cross sections, not individual level.
+
+
+```{r}
+subset(earnings, faminc < mn_earn_wne_p10) %>% NROW
+earnings %>% NROW
+{ subset(earnings, faminc < mn_earn_wne_p10) %>% NROW } / { earnings %>% NROW }   #22%
+```
