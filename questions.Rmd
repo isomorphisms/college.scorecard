@@ -22,8 +22,10 @@
 #### ending p means…?
 
 they are cohorts.
-- `p6` is 6 years after graduation.
-- p10 is 10 years after graduation.
+- `p6` is 6 years after *enrolment* [^not graduation].
+- `p10` is 10 years after enrolment.
+
+So `p10` is something like "at age 28" — for the famous schools with low >24 enrollment and grads mostly finishing in 4 years. With many kinds of exceptions, including death.
 
 ### fsend means … ?
 
@@ -1214,3 +1216,89 @@ subset(earnings, faminc < mn_earn_wne_p10) %>% NROW
 earnings %>% NROW
 { subset(earnings, faminc < mn_earn_wne_p10) %>% NROW } / { earnings %>% NROW }   #22%
 ```
+
+
+
+
+# important points from the data description PDF
+
+> ###Earnings
+> One of the most common reasons students cite in choosing to go to college is the expansion of employment opportunities. To that end, data on the earnings and employment prospects of former students can provide key information. To measure the labor market outcomes of individuals attending institutions of higher education, data on cohorts of federally aided students were linked with earnings data from de-identified tax records and reported back at the aggregate, institutional level.  There are
+> two notable limitations that researchers should keep in mind for all of these metrics. First, the data are not yet available to produce program-level earnings data. Research suggests that **the variation across programs within a school may be even greater than aggregate earnings across schools**; for instance, STEM and health majors frequently earn more than students who study in other fields. Second, the data include only Title IV-receiving students, so figures may not be representative of schools with a low proportion of Title IV-eligible students. Additionally, the data are restricted to students who are not enrolled (enrolled means having an in-school deferment status for at least 30 days of the measurement year), so students who are currently enrolled in graduate school at the time of measurement are excluded.
+
+† So who qualifies for Title IV?
+
+
+
+> Mean (`mn_earn_wne_p*`) and median (`md_earn_wne_p*`)
+earnings are for the institutional aggregate of all federally aided
+students who enroll in an institution each year and who are
+employed but not enrolled. Earnings are defined as the sum of
+wages and deferred compensation from all non-duplicate W-2
+forms received for each individual, plus positive self-
+employment earnings from Schedule SE. Data are available for
+each year starting six years after a student enrolls in college, up
+to 10 years after the student enrolls; enrollment dates are
+estimated based on FAFSA self-reporting, as with the
+completion rate cohort construction described above.
+Mean earnings are also available in years 6 and 10 after entry to
+the institution (but not between those years) disaggregated by
+FAFSA family income (mn_earn_wne_inc1_p*,
+mn_earn_wne_inc2_p*, and mn_earn_wne_inc3_p*); by
+dependent status (for dependents, mn_earn_wne_indep0 _p*;
+and for independents, mn_earn_wne_indep1_p*); and by
+gender (for female, mn_earn_wne_male0_p*; and for male,
+mn_earn__wne_male1_p*).
+
+> Earnings are based on measurement periods with years after
+cohort entry labeled in the variable names with a *pZ at the
+end. For a given pooled cohort AAAA-BBBB, where BBBB is
+AAAA+1, data are included on merged file XXXX based on
+XXXX=AAAA+Z. For example, ten-year earnings (*p10) in the
+2011 data file refer to the 2001-2002 pooled cohorts measured
+in the 2011 and 2012 calendar years. While earnings are
+measured based on calendar years, cohort years for earnings
+variables are based on award years.
+Those data are available for the 2005-2006 cohorts; the 2003-
+2004 cohorts; the 2001-2002 cohorts; the 1999-2000 cohorts;
+and the 1996-1997 cohorts. Disaggregated earnings data are
+available only at 6 and 10 years after entry for the relevant
+cohorts.
+
+
+
+
+
+> pecial Mission or
+Religious Affiliation
+String
+Institutions that are identified as minority-serving institutions, including
+(for this purpose) Historically Black Colleges and Universities and Tribal
+Colleges and Universities, are flagged with an indicator
+(HBCU=Historically Black Colleges and Universities; PBI=Predominantly
+Black Institutions; ANNHI=Alaska Native-/Native Hawaiian-serving
+Institutions; TRIBAL=Tribal Colleges and Universities; AANAPII=Asian
+American-/Native American-Pacific Islander-serving Institutions;
+HSI=Hispanic-serving Institutions; NANTI=Native American Non-Tribal
+Institutions). These are all recent grantees of the Department’s
+minority-serving institution programs or designated in statute.
+Institutions are also identified by their religious affiliation (RELAFFIL),
+including not reported or no affiliation. These data are reported by
+institutions to IPEDS.
+Data on special missions are provided only for the most recent year, in
+the 2013 data file, but represent data from Summer 2015.
+
+
+
+
+So, keep really small or special-purpose institutions in mind.
+
+
+
+
+> The repayment rates are produced in
+rolling two-year averages to reduce variability from year to
+year
+
+
+Why is there so much variability? And should we really be removing it?
